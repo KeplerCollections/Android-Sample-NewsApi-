@@ -2,7 +2,7 @@ package com.kepler.androidsamplemynewsapi.boilers;
 
 import android.os.Bundle;
 
-public abstract class MVPActivity<T extends MVP.BasePresenter> extends BaseFragmentActivity implements MVP.BaseView {
+public abstract class MVPActivity<T extends MVP.BasePresenter> extends BaseActivity implements MVP.BaseView {
 
     /**
      * The Presenter attached to this View

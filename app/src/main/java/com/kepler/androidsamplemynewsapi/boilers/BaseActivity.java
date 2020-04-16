@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,29 +55,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    protected void disableBackButton() {
-        if (getSupportActionBar() == null)
-            return;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-    }
-
     protected void startActivity(Class baseActivity) {
         startActivity(new Intent(this, baseActivity));
 
     }
 
-    protected void setActionBarTitle(int title) {
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle(title);
-    }
 
     protected void setActionBarTitle(String title) {
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle(title);
-    }
-
-    protected void toastMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     protected boolean isNetworkConnected() {

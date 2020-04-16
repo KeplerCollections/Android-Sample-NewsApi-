@@ -53,11 +53,6 @@ public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements App
     }
 
     @Override
-    protected int getContainerId() {
-        return 0;
-    }
-
-    @Override
     public void startProgressing() {
         progrssBar.setIndeterminate(true);
         progrssBar.setVisibility(View.VISIBLE);
@@ -108,11 +103,6 @@ public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements App
 
     }
 
-
-    @Override
-    public void toast(String msg) {
-
-    }
 
     @Override
     public void loadArticle(String source) {

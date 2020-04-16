@@ -3,6 +3,7 @@ package com.kepler.androidsamplemynewsapi;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,13 +21,13 @@ public class BrowserActivity extends BaseActivity {
     WebView webView;
     @BindView(R.id.progrssBar)
     ProgressBar progrssBar;
-    private String url;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         enableBackButton();
-        url = getIntent().getStringExtra(PARAM_URL);
+        String url = getIntent().getStringExtra(PARAM_URL);
         setActionBarTitle(url);
         webView.loadUrl(url);
 
@@ -40,12 +41,14 @@ public class BrowserActivity extends BaseActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 progressing(true);
+                handler.postDelayed(() -> {
+                    progressing(false);
+                }, 5000);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                progressing(false);
             }
         });
     }
@@ -53,12 +56,11 @@ public class BrowserActivity extends BaseActivity {
     private void progressing(boolean progressing) {
         if (progrssBar == null)
             return;
+        progrssBar.setIndeterminate(progressing);
         if (progressing) {
-            progrssBar.setIndeterminate(true);
             progrssBar.setVisibility(View.VISIBLE);
         } else {
             progrssBar.setVisibility(View.GONE);
-            progrssBar.setIndeterminate(false);
         }
     }
 

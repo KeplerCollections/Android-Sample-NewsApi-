@@ -1,7 +1,5 @@
 package com.kepler.androidsamplemynewsapi.presenters;
 
-import android.content.Context;
-
 import com.kepler.androidsamplemynewsapi.boilers.MVP;
 import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.pojo.Source;
@@ -10,8 +8,7 @@ import java.util.List;
 
 public class AppLogic {
 
-    public interface RequiredBaseView extends MVP.BaseView {
-        Context getApplicationContext();
+    private interface RequiredBaseView extends MVP.BaseView {
     }
 
     /********* Logic for Main************/

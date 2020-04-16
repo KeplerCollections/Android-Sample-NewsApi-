@@ -19,9 +19,6 @@ public class SourceResponse {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public List<Source> getSources() {
         if (sources.size() > 10)
@@ -29,7 +26,4 @@ public class SourceResponse {
         return sources;
     }
 
-    public void setSources(List<Source> sources) {
-        this.sources = sources;
-    }
 }

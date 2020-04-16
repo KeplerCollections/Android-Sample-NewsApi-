@@ -14,12 +14,9 @@ public class SplashScreen extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(MainActivity.class);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            startActivity(MainActivity.class);
+            finish();
         }, DELAY);
     }
 

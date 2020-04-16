@@ -15,11 +15,10 @@ import java.util.List;
 
 import static com.kepler.androidsamplemynewsapi.support.Constants.PARAM_SOURCE;
 
-public class TabAdapter extends FragmentStatePagerAdapter {
+class TabAdapter extends FragmentStatePagerAdapter {
 
 
     private final List<Source> sourceList;
-    private Bundle bundle;
 
 
     public TabAdapter(@NonNull FragmentManager fm, List<Source> sourceList) {
@@ -36,7 +35,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
     private Fragment getFragment(int position) {
         Log.e("position", "=" + position);
-        bundle = new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString(PARAM_SOURCE, sourceList.get(position).getId());
         return NewsFragment.getInstance(bundle);
     }

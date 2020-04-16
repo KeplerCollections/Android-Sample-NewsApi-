@@ -59,17 +59,13 @@ public class MainPresnter extends MVPImpl<AppLogic.MainView> implements AppLogic
             @Override
             public void onDataLoaded(List<Article> list) {
                 view.stopProgressing();
-                if (list.isEmpty()) {
-//                    view.showNoSourcesData();
-                } else {
+                if (!list.isEmpty())
                     view.showArticles(list, source);
-                }
             }
 
             @Override
             public void onDataNotAvailable() {
                 view.stopProgressing();
-//                view.showLoadingSourcesError();
             }
         }, isNetworkAvailable);
 

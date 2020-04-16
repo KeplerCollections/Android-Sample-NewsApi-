@@ -6,7 +6,7 @@ import com.kepler.androidsamplemynewsapi.api.IDataSource;
 import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.pojo.Source;
 
-public interface IRepositoryData {
+interface IRepositoryData {
 
     void getArticles(String source,
                      IDataSource.LoadDataCallback<Article> callback,

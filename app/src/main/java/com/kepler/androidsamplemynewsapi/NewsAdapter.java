@@ -13,6 +13,8 @@ import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.support.interfaces.SetOnRecyclerViewItemClickListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
 
     private final SetOnRecyclerViewItemClickListener setOnRecyclerViewItemClickListener;
     private final List<Article> dataSet = new ArrayList<>();
-
+    private final SimpleDateFormat formatOd = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private final SimpleDateFormat formatNew = new SimpleDateFormat("dd MMM, hh:mm a");
     public NewsAdapter(SetOnRecyclerViewItemClickListener setOnRecyclerViewItemClickListener) {
         this.setOnRecyclerViewItemClickListener = setOnRecyclerViewItemClickListener;
     }
@@ -73,17 +76,24 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
             setOnRecyclerViewItemClickListener.onItemClick(dataSet.get(getAdapterPosition()).getUrl());
         }
 
-        public void onBindViewHolder(Article article) {
+        void onBindViewHolder(Article article) {
             if (article == null)
                 return;
             title.setText(article.getTitle());
-            publishDate.setText(article.getPublishedAt());
+            publishDate.setText(getParseDate(article.getPublishedAt()));
             Picasso.get()
                     .load(article.getImageUrl())
                     .placeholder(android.R.drawable.stat_sys_download_done)
-                    .resize(60, 60)
-                    .centerCrop()
+                    .resize(80, 80)
                     .into(imageview);
+        }
+
+        private String getParseDate(String publishedAt) {
+            try {
+                return formatNew.format(formatOd.parse(publishedAt));
+            } catch (ParseException e) {
+                return  publishedAt;
+            }
         }
     }
 
