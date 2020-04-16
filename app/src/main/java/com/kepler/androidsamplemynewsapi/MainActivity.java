@@ -1,9 +1,5 @@
 package com.kepler.androidsamplemynewsapi;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -11,11 +7,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
-import com.kepler.androidsamplemynewsapi.api.ApiClient;
-import com.kepler.androidsamplemynewsapi.api.ApiService;
-import com.kepler.androidsamplemynewsapi.api.remote.IRemoteDataSource;
-import com.kepler.androidsamplemynewsapi.api.remote.RemoteDataSource;
 import com.kepler.androidsamplemynewsapi.boilers.BaseFragmentCommunicator;
 import com.kepler.androidsamplemynewsapi.boilers.MVPActivity;
 import com.kepler.androidsamplemynewsapi.pojo.Article;
@@ -28,14 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements AppLogic.MainView, BaseFragmentCommunicator {
 
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
-  @BindView(R.id.messageView)
-  TextView messageView;
+    @BindView(R.id.messageView)
+    TextView messageView;
     @BindView(R.id.progrssBar)
     ProgressBar progrssBar;
     @BindView(R.id.view_pager)
@@ -92,8 +86,8 @@ public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements App
 
     @Override
     public void showSources(List<Source> sources) {
-        if(adapter==null){
-            adapter = new TabAdapter(getSupportFragmentManager(),sources);
+        if (adapter == null) {
+            adapter = new TabAdapter(getSupportFragmentManager(), sources);
             mViewPager.setAdapter(adapter);
             mTabLayout.setupWithViewPager(mViewPager);
         }
@@ -105,7 +99,7 @@ public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements App
     }
 
     @Override
-    public void showArticles(List<Article> list,String source) {
+    public void showArticles(List<Article> list, String source) {
         Intent intentMultiPurpose = new Intent();
         intentMultiPurpose.setAction(Constants.ACTION.ACTION_ARTICLE_ARRIVED);
         intentMultiPurpose.putParcelableArrayListExtra(Constants.PARAM_DATA, (ArrayList<? extends Parcelable>) list);
@@ -123,5 +117,10 @@ public class MainActivity extends MVPActivity<AppLogic.MainLogic> implements App
     @Override
     public void loadArticle(String source) {
         presenter.loadArticle(source);
+    }
+
+    @Override
+    public void openUrl(String url) {
+        openInAppBrowser(url);
     }
 }
