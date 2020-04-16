@@ -2,8 +2,11 @@ package com.kepler.androidsamplemynewsapi;
 
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -22,13 +25,15 @@ public class BrowserActivity extends BaseActivity {
     @BindView(R.id.progrssBar)
     ProgressBar progrssBar;
     private Handler handler = new Handler();
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         enableBackButton();
-        String url = getIntent().getStringExtra(PARAM_URL);
+        url = getIntent().getStringExtra(PARAM_URL);
         setActionBarTitle(url);
+
         webView.loadUrl(url);
 
         // this will enable the javascipt.
@@ -50,7 +55,21 @@ public class BrowserActivity extends BaseActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
             }
+
+            @Override
+            public boolean shouldOverrideKeyEvent (WebView view, KeyEvent event) {
+                // Do something with the event here
+                return true;
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading (WebView view, String url) {
+                // reject anything other
+                return true;
+            }
         });
+
+
     }
 
     private void progressing(boolean progressing) {
