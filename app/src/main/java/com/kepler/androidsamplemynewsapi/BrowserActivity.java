@@ -25,13 +25,12 @@ public class BrowserActivity extends BaseActivity {
     @BindView(R.id.progrssBar)
     ProgressBar progrssBar;
     private Handler handler = new Handler();
-    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         enableBackButton();
-        url = getIntent().getStringExtra(PARAM_URL);
+        String url = getIntent().getStringExtra(PARAM_URL);
         setActionBarTitle(url);
 
         webView.loadUrl(url);
