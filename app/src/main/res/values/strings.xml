@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Sample [mynewsapi]</string>
+    <string name="app_name">Nova News</string>
     <string name="data_unavailable">Data Unavailable</string>
     <string name="data_error">Data Error</string>
 </resources>
