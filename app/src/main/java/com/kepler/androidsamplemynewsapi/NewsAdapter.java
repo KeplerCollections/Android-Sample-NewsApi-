@@ -84,7 +84,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
             Picasso.get()
                     .load(article.getImageUrl())
                     .placeholder(android.R.drawable.stat_sys_download_done)
-                    .resize(80, 80)
+                    .centerCrop()
+                    .resize(100, 100)
                     .into(imageview);
         }
 
@@ -96,7 +97,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
             }
         }
     }
-
 
 
 
