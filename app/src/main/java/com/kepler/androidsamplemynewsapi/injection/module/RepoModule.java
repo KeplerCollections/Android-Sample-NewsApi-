@@ -1,7 +1,5 @@
 package com.kepler.androidsamplemynewsapi.injection.module;
 
-import android.app.Application;
-
 import com.kepler.androidsamplemynewsapi.api.repo.Repository;
 
 import javax.inject.Singleton;

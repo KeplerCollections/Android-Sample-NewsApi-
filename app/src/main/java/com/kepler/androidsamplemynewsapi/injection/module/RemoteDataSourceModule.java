@@ -1,9 +1,6 @@
 package com.kepler.androidsamplemynewsapi.injection.module;
 
-import android.app.Application;
-
 import com.kepler.androidsamplemynewsapi.api.remote.RemoteDataSource;
-import com.kepler.androidsamplemynewsapi.api.repo.Repository;
 
 import javax.inject.Singleton;
 

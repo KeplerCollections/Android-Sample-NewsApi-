@@ -18,15 +18,15 @@ public class BrowserActivity extends BaseActivity {
 
     @BindView(R.id.webview)
     WebView webView;
-   @BindView(R.id.progrssBar)
-   ProgressBar progrssBar;
+    @BindView(R.id.progrssBar)
+    ProgressBar progrssBar;
     private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         enableBackButton();
-        url = getIntent(    ).getStringExtra(PARAM_URL);
+        url = getIntent().getStringExtra(PARAM_URL);
         setActionBarTitle(url);
         webView.loadUrl(url);
 
@@ -35,8 +35,7 @@ public class BrowserActivity extends BaseActivity {
 
         // WebViewClient allows you to handle
         // onPageFinished and override Url loading.
-        webView.setWebViewClient(new WebViewClient()
-        {
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
@@ -51,14 +50,13 @@ public class BrowserActivity extends BaseActivity {
         });
     }
 
-    private void progressing(boolean progressing)
-    {
-        if(progrssBar==null)
+    private void progressing(boolean progressing) {
+        if (progrssBar == null)
             return;
-        if(progressing){
+        if (progressing) {
             progrssBar.setIndeterminate(true);
             progrssBar.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             progrssBar.setVisibility(View.GONE);
             progrssBar.setIndeterminate(false);
         }

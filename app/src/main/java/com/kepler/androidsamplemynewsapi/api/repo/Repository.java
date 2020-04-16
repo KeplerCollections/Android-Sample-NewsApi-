@@ -6,7 +6,6 @@ import com.kepler.androidsamplemynewsapi.api.IDataSource;
 import com.kepler.androidsamplemynewsapi.api.remote.IRemoteDataSource;
 import com.kepler.androidsamplemynewsapi.api.remote.RemoteDataSource;
 import com.kepler.androidsamplemynewsapi.injection.component.DaggerRemoteDataSourceComponent;
-import com.kepler.androidsamplemynewsapi.injection.component.DaggerRepoComponent;
 import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.pojo.Source;
 
@@ -22,14 +21,15 @@ public class Repository implements IRepositoryData {
     RemoteDataSource remoteDataSource;
 
 
-    public Repository(){
+    public Repository() {
         DaggerRemoteDataSourceComponent.create().inject(this);
 
     }
+
     @Override
     public void getArticles(String source, IDataSource.LoadDataCallback<Article> callback, boolean isNetworkAvailable) {
         checkNotNull(callback);
-        if (isNetworkAvailable){
+        if (isNetworkAvailable) {
             getArticlesFromRemoteDataSource(source, callback);
         } else {
             callback.onDataNotAvailable();
@@ -56,7 +56,7 @@ public class Repository implements IRepositoryData {
     @Override
     public void getSources(@NonNull IDataSource.LoadDataCallback<Source> callback, boolean isNetworkAvailable) {
         checkNotNull(callback);
-        if (isNetworkAvailable){
+        if (isNetworkAvailable) {
             getSourcesFromRemoteDataSource(callback);
         } else {
             callback.onDataNotAvailable();

@@ -16,11 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kepler.androidsamplemynewsapi.boilers.BaseFragment;
-import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.support.Constants;
 import com.kepler.androidsamplemynewsapi.support.interfaces.SetOnRecyclerViewItemClickListener;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -33,8 +30,8 @@ public class NewsFragment extends BaseFragment {
     private String source;
     private NewsAdapter mAdapter;
 
-    public static NewsFragment getInstance(Bundle bundle){
-        NewsFragment newsFragment=new NewsFragment();
+    public static NewsFragment getInstance(Bundle bundle) {
+        NewsFragment newsFragment = new NewsFragment();
         newsFragment.setArguments(bundle);
         return newsFragment;
 
@@ -53,7 +50,6 @@ public class NewsFragment extends BaseFragment {
         });
         communicator.loadArticle(source);
     }
-
 
 
     @Override
@@ -81,7 +77,7 @@ public class NewsFragment extends BaseFragment {
     private BroadcastReceiver mArticleReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(source.equals(intent.getStringExtra(Constants.PARAM_SOURCE))){
+            if (source.equals(intent.getStringExtra(Constants.PARAM_SOURCE))) {
                 mAdapter.add(intent.getParcelableArrayListExtra(Constants.PARAM_DATA));
             }
         }

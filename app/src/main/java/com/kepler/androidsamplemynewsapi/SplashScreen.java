@@ -20,7 +20,7 @@ public class SplashScreen extends BaseActivity {
                 startActivity(MainActivity.class);
                 finish();
             }
-        },DELAY);
+        }, DELAY);
     }
 
     @Override

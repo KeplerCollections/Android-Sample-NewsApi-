@@ -6,8 +6,6 @@ import com.kepler.androidsamplemynewsapi.api.IDataSource;
 import com.kepler.androidsamplemynewsapi.pojo.Article;
 import com.kepler.androidsamplemynewsapi.pojo.Source;
 
-import java.util.List;
-
 public interface IRepositoryData {
 
     void getArticles(String source,

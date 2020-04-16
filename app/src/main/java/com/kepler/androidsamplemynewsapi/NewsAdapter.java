@@ -39,8 +39,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
 
     @Override
     public void onBindViewHolder(@NonNull LayoutViewHolder holder, int position) {
-            holder.onBindViewHolder(dataSet.get(position));
-        }
+        holder.onBindViewHolder(dataSet.get(position));
+    }
 
     @Override
     public int getItemCount() {
@@ -74,7 +74,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.LayoutViewHold
         }
 
         public void onBindViewHolder(Article article) {
-            if(article==null)
+            if (article == null)
                 return;
             title.setText(article.getTitle());
             publishDate.setText(article.getPublishedAt());
